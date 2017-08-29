@@ -50,6 +50,7 @@
       submit: function (formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
+            this.$store.dispatch('setsynoKey', this.loginForm.synoKey)
             console.log('验证通过', this.loginForm)
             if (!this.$store.state.syno.isInitDS) {
               this.$store.dispatch('initDS')

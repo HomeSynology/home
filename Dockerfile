@@ -9,7 +9,7 @@ RUN apt-get update
 RUN apt-get install -y \
     git nginx-light
 
-RUN git clone -b rel https://github.com/HomeSynology/homeSynology.git /var/www
+RUN git clone -b rel https://github.com/HomeSynology/homeSynology.git /var/www/homeSynology
 
 ADD nginx/www.conf /etc/nginx/sites-available/
 RUN ln -s /etc/nginx/sites-available/www.conf /etc/nginx/sites-enabled/

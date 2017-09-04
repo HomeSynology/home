@@ -2,7 +2,7 @@ import types from '../mutation-types'
 import {DownloadStation} from 'synoapi'
 import axios from 'axios'
 
-export const state = {
+const initState = {
   isInitDS: false,
   sid: '', // 登陆群晖后的token
   synoKey: '', // 自己约定的统一标识,用于查找对应的socket
@@ -16,6 +16,8 @@ export const state = {
     message: ''
   }
 }
+
+export const state = initState
 
 export const mutations = {
   [types.SET_SID] (state, sid) {
@@ -35,6 +37,9 @@ export const mutations = {
   },
   [types.SET_TASKLIST] (state, taskList) {
     state.taskList = taskList
+  },
+  [types.CLEAN_DSSTATE] (state) {
+    state = initState
   }
 }
 
@@ -72,15 +77,19 @@ export const actions = {
       dispatch('logout')
     }
   },
-  logout ({commit}) {
+  cleanDSState ({commit}) {
+    commit(types.CLEAN_DSSTATE)
+  },
+  logout ({dispatch}) {
     window.localStorage.removeItem('sid')
-    commit(types.REMOVE_SID)
+    dispatch('cleanDSState')
   },
   setSid({commit}, sid) {
     window.localStorage.setItem('sid', sid)
     commit(types.SET_SID, sid)
   },
   setsynoKey({commit}, synoKey) {
+    window.localStorage.setItem('synoKey', synoKey)
     commit(types.SET_SYNOKEY, synoKey)
   },
   async downloadUrl ({commit}, url) {

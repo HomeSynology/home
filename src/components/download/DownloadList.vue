@@ -40,6 +40,9 @@
       if (!this.$store.state.syno.sid) {
         console.log('没有sid')
       }
+      if (!this.$store.state.syno.synoKey) {
+        this.$store.dispatch('login')
+      }
       await this.$store.dispatch('getTasks')
       setInterval(() => {
         this.$store.dispatch('getTasks')

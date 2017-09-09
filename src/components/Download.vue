@@ -2,15 +2,13 @@
   <DownloadList v-if="sid"></DownloadList>
   <Login v-else></Login>
 </template>
-
 <script>
   import Login from './login/Login'
-  import DownloadList from './download/DownloadList'
   import {mapState} from 'vuex'
   export default {
     components: {
       Login,
-      DownloadList
+      DownloadList: () => import(/* webpackChunkName: "downloadlist" */'./download/DownloadList')
     },
     computed: mapState({
       sid: state => state.syno.sid,
@@ -27,12 +25,10 @@
       if (synoKey && !this.synoKey) {
         this.$store.dispatch('setsynoKey', synoKey)
       }
-
       if (!synoKey || !sid) {
         return this.$store.dispatch('cleanDSState')
       }
     }
   }
-
 </script>
 

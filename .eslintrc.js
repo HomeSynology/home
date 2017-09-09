@@ -4,7 +4,8 @@ module.exports = {
   root: true,
   parser: 'babel-eslint',
   parserOptions: {
-    sourceType: 'module'
+    sourceType: 'module',
+    allowImportExportEverywhere: true
   },
   env: {
     browser: true,
@@ -17,6 +18,7 @@ module.exports = {
   ],
   // add your custom rules here
   'rules': {
+    "no-multiple-empty-lines": 0,
     // allow paren-less arrow functions
     'arrow-parens': 0,
     // allow async-await

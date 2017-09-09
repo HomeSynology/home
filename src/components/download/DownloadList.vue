@@ -12,13 +12,13 @@
 </template>
 
 <script>
-  import TaskItem from './TaskItem'
+
   import {mapState} from 'vuex'
   import orderBy from 'lodash/orderBy'
 
   export default {
     components: {
-      TaskItem
+      TaskItem: () => import(/* webpackChunkName: "taskItem" */'./TaskItem')
     },
     data: function () {
       return {

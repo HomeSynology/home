@@ -2,6 +2,7 @@ import types from '../mutation-types'
 import {DownloadStation} from 'synoapi'
 import axios from 'axios'
 
+// TODO:docker部署时填入参数
 const initState = {
   isInitDS: false,
   sid: '', // 登陆群晖后的token
@@ -108,8 +109,6 @@ export const actions = {
     })
     if (result.success) {
       alert('创建种子下载成功')
-      dispatch
-
     }
   }
 }

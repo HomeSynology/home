@@ -6,11 +6,10 @@
 </template>
 
 <script>
-  import Header from './components/header/Header'
   export default {
     name: 'app',
     components: {
-      comheader: Header
+      comheader: () => import(/* webpackChunkName: "comheader" */ './components/header/Header')
     }
   }
 </script>

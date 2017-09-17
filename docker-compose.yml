@@ -1,6 +1,0 @@
-home-synology:
-  build: ./
-  expose:
-    - "80"
-  ports:
-    - "11380:80"

@@ -1,1 +1,0 @@
-alert('chunk1.js')

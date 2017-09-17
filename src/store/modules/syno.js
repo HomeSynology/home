@@ -2,7 +2,7 @@ import types from '../mutation-types'
 import {DownloadStation} from 'synoapi'
 import axios from 'axios'
 import dsConfig from '@/config/dsConfig'
-console.log('环境变量', process.env, dsConfig)
+console.log('环境变量:', process.env, dsConfig)
 
 // TODO:docker部署时填入参数
 const initState = {

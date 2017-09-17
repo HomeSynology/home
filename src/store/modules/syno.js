@@ -1,6 +1,8 @@
 import types from '../mutation-types'
 import {DownloadStation} from 'synoapi'
 import axios from 'axios'
+import dsConfig from '@/config/dsConfig'
+console.log('环境变量', process.env, dsConfig)
 
 // TODO:docker部署时填入参数
 const initState = {
@@ -8,14 +10,7 @@ const initState = {
   sid: '', // 登陆群晖后的token
   synoKey: '', // 自己约定的统一标识,用于查找对应的socket
   taskList: [],
-  dsOption: {
-    protocol: 'http',
-    address: 'localhost',
-    port: '5001',
-    debug: false,
-    success: false,
-    message: ''
-  }
+  dsOption: dsConfig
 }
 
 export const state = initState

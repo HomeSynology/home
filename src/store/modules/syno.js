@@ -13,6 +13,10 @@ const initState = {
   dsOption: dsConfig
 }
 
+const logoutCode = {
+  105: true,
+  4004: true
+}
 export const state = initState
 
 export const mutations = {
@@ -69,7 +73,7 @@ export const actions = {
       return
     }
     // TODO:统一错误处理
-    if (taskResult.error.code === 105) {
+    if (logoutCode[taskResult.error.code]) {
       dispatch('logout')
     }
   },
